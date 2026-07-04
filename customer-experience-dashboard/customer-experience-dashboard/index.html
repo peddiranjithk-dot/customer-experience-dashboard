@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Experience Dashboard</title>
+
+<!-- Chart.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Project stylesheet -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <p class="brand-eyebrow">Customer Experience · Command Center</p>
+      <h1>How customers feel, right now</h1>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div class="range">
+        <button>24H</button>
+        <button class="active">7D</button>
+        <button>30D</button>
+        <button>QTR</button>
+      </div>
+      <div class="live-pill"><span class="dot"></span> Live · updated 2 min ago</div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- Signature hero readout -->
+    <div class="card readout">
+      <h3 style="align-self:flex-start;">Overall CSAT</h3>
+      <div class="dial-wrap"><canvas id="dialChart"></canvas></div>
+      <p class="dial-label">Healthy range</p>
+      <p class="dial-sub">Based on 4,812 responses this week</p>
+    </div>
+
+    <!-- KPI stack -->
+    <div class="card kpi">
+      <h3>Signal Board</h3>
+      <div class="kpi-row">
+        <span class="kpi-label">Net Promoter Score</span>
+        <span><span class="kpi-val">+42</span><span class="delta up">▲ 3</span></span>
+      </div>
+      <div class="kpi-row">
+        <span class="kpi-label">First response time</span>
+        <span><span class="kpi-val">2h 14m</span><span class="delta up">▼ 18m</span></span>
+      </div>
+      <div class="kpi-row">
+        <span class="kpi-label">Resolution rate</span>
+        <span><span class="kpi-val">91.4%</span><span class="delta up">▲ 1.2%</span></span>
+      </div>
+      <div class="kpi-row">
+        <span class="kpi-label">Escalations</span>
+        <span><span class="kpi-val">37</span><span class="delta down">▲ 9</span></span>
+      </div>
+      <div class="kpi-row">
+        <span class="kpi-label">Churn risk flags</span>
+        <span><span class="kpi-val">14</span><span class="delta down">▲ 4</span></span>
+      </div>
+    </div>
+
+    <!-- Sentiment donut -->
+    <div class="card donut-card">
+      <h3>Sentiment Mix</h3>
+      <div class="donut-wrap"><canvas id="sentimentDonut"></canvas></div>
+      <div class="legend" id="sentLegend"></div>
+    </div>
+
+    <!-- Ticket volume line -->
+    <div class="card chart-card">
+      <h3>Ticket Volume vs. CSAT Trend — Last 7 Days</h3>
+      <canvas id="volumeChart"></canvas>
+    </div>
+
+    <!-- Channel bar -->
+    <div class="card chart-card">
+      <h3>Volume by Channel</h3>
+      <canvas id="channelChart"></canvas>
+    </div>
+
+    <!-- Issues table -->
+    <div class="card issues">
+      <h3>Top Recurring Issues</h3>
+      <table>
+        <thead>
+          <tr><th>Issue</th><th>Mentions</th><th>Severity</th></tr>
+        </thead>
+        <tbody id="issuesBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Feedback stream -->
+    <div class="card stream">
+      <h3>Live Feedback Stream</h3>
+      <div id="feedList"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Customer Experience Dashboard · demo data</span>
+    <span>Timezone: IST (UTC+5:30)</span>
+  </footer>
+</div>
+
+<!-- Project script -->
+<script src="js/script.js"></script>
+</body>
+</html>
